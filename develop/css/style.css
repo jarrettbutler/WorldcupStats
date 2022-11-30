@@ -16,3 +16,23 @@ header h1{
 .table{
     margin: 15px;
 }
+
+.hide{
+    display: none;
+}
+
+.country-info{
+    margin-top: 56px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.country-info h1{
+    font-size: 100px;
+    font-weight: bolder;
+}
+
+.box{
+    border-style: solid;
+}
