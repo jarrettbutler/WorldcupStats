@@ -26,13 +26,43 @@ header h1{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    display: inline-block;
+    width: 100%;
 }
 
 .country-info h1{
     font-size: 100px;
     font-weight: bolder;
+
 }
 
 .box{
     border-style: solid;
+    margin: 20px;
+    width: 175px;
+    height: 100px;
+    
 }
+
+.matches {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.teams {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.scores {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
