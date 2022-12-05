@@ -54,8 +54,8 @@ header h1{
 }
 
 .favourite{
-    background-color: gray;
-    border-radius: 50%;
+    background-color: #800000;
+    border-color: whitesmoke;
     font-size: 20px;
     color: white;
     cursor:pointer;
