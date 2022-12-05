@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Cup Statistics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Train+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
     <link rel="stylesheet" href="./develop/css/style.css">
 </head>
@@ -28,7 +31,7 @@
     </header>
 
     <section class="columns is-multiline is-one-quarter">
-        <table class="table is-bordered column hide">
+        <table class="table is-bordered column grow hide">
             <tr>
                 <th class="groupA">Group A</th>
                 <th>Wins</th>
@@ -65,7 +68,7 @@
                 <td class="pointsA4">0</td>
             </tr>
         </table>
-        <table class="table is-bordered column hide">
+        <table class="table is-bordered column grow hide">
             <tr>
                 <th class="groupB"></th>
                 <th>Wins</th>
@@ -102,7 +105,7 @@
                 <td class="pointsB4"></td>
             </tr>
         </table>
-        <table class="table is-bordered column hide">
+        <table class="table is-bordered column grow hide">
             <tr>
                 <th class="groupC"></th>
                 <th>Wins</th>
@@ -139,7 +142,7 @@
                 <td class="pointsC4"></td>
             </tr>
         </table>
-        <table class="table is-bordered column hide">
+        <table class="table is-bordered column grow hide">
             <tr>
                 <th class="groupC"></th>
                 <th>Wins</th>
@@ -176,7 +179,7 @@
                 <td class="pointsC4"></td>
             </tr>
         </table>
-        <table class="table is-bordered column hide">
+        <table class="table is-bordered column grow hide">
             <tr>
                 <th class="groupD"></th>
                 <th>Wins</th>
@@ -213,7 +216,7 @@
                 <td class="pointsD4"></td>
             </tr>
         </table>
-        <table class="table is-bordered column hide">
+        <table class="table is-bordered column grow hide">
             <tr>
                 <th class="groupE"></th>
                 <th>Wins</th>
@@ -250,7 +253,7 @@
                 <td class="pointsE4"></td>
             </tr>
         </table>
-        <table class="table is-bordered column hide">
+        <table class="table is-bordered column grow hide">
             <tr>
                 <th class="groupF"></th>
                 <th>Wins</th>
@@ -287,7 +290,7 @@
                 <td class="pointsF4"></td>
             </tr>
         </table>
-        <table class="table is-bordered column hide">
+        <table class="table is-bordered column grow hide">
             <tr>
                 <th class="groupG"></th>
                 <th>Wins</th>
@@ -326,14 +329,20 @@
     </section>
 
     <section class="country-info">
-        <h1 class="country-name">Canada</h1>
+        <h1 class="country-name">Canada <button class="favourite">⭐</button></h1>
         <img src="./develop/images/canadianflag.png"></img>
         <p class="fact1">Pop: 38.25million</p>
         <p class="fact2">Currency: Canadian$</p>
         <p class="fact3">Official languages: French and English</p>
     </section>
     <section class="matches">
-        <card class="box match1">
+        <card class="box match1 grow">
+            <div class="round">
+                <p class="round1">Round Robin</p>
+            </div>
+            <div class="date">
+                <p class="date1">Nov 23, 2022</p>
+            </div>
             <div class="teams">
             <p class="hometeam1">Belgium</p>
             <p class="awayteam1">Canada</p>
@@ -344,7 +353,13 @@
             <p class="awayteamscore1">0</p>
             </div>
         </card>
-        <card class="box match2">
+        <card class="box match2 grow">
+            <div class="round">
+                <p class="round2"></p>
+            </div>
+            <div class="date">
+                <p class="date2"></p>
+            </div>
             <div class="teams">
             <p class="hometeam2"></p>
             <p class="awayteam2"></p>
@@ -355,7 +370,13 @@
             <p class="awayteamscore2"></p>
             </div>
         </card>
-        <card class="box match3">
+        <card class="box match3 grow">
+            <div class="round">
+                <p class="round3"></p>
+            </div>
+            <div class="date">
+                <p class="date3"></p>
+            </div>
             <div class="teams">
             <p class="hometeam3"></p>
             <p class="awayteam3"></p>
@@ -367,7 +388,6 @@
             </div>
         </card>
     </section>
-
 
     <script src="./develop/js/script.js"></script>
 </body>
