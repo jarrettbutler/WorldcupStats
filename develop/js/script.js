@@ -10,20 +10,15 @@ const getCountry = document.getElementById("get-country");
 const getCountryCard = document.getElementById("get-country--card");
 const searchInput = document.getElementById("search-input");
 const searchBtn = document.getElementById("search-btn");
-
-let flag = [];
+const favouriteBtn = document.getElementById("bookmark-btn");
+const cardName = document.querySelector(".country-name");
+let bookmarks = [];
 for (let i = 0; i < dropDowns.length; i++) {
   dropDowns[i].addEventListener("click", function () {
     dropDowns[i].classList.toggle("is-active");
     dropDowns[i].classList.toggle("drop-mar");
   });
 }
-
-// for (let i = 0; i < dropItems.length; i++) {
-//   dropItems[i].addEventListener("click", function () {
-//     console.log(dropItems[i].textContent);
-//   });
-// }
 
 // ======================================================
 // ---------------Render All Groups of World Cup 2022 -------------------
@@ -109,20 +104,6 @@ const getData = function (url) {
   });
 };
 
-// getData("https://copa22.medeiro.tech/groups");
-
-// -----------------------Modal windows BTNS Handler-------------------------
-
-// fetch(`https://copa22.medeiro.tech/teams/ned/matches`)
-//   .then((response) => response.json())
-//   .then((data) => console.log(data));
-
-// fetch(`https://restcountries.com/v2/name/USA`)
-//   .then((response) => response.json())
-//   .then((data) => {
-
-//   });
-
 for (let i = 0; i < dropItems.length; i++) {
   dropItems[i].addEventListener("click", function () {
     renderMatchHead(dropItems[i].textContent);
@@ -140,9 +121,7 @@ function renderMatchHead(countryName) {
     .then((data) => {
       // console.log(data);
       const html = `
-     <h1 class="country-name">${
-       data[0].name
-     } <button class="favourite">⭐</ button></h1>
+     <h1 class="country-name">${data[0].name}</h1>
      <img src=${data[0].flag}></img>
      <p class="fact1">Population: ${(data[0].population / 1000000).toFixed(
        3
@@ -154,6 +133,9 @@ function renderMatchHead(countryName) {
     
       `;
       getCountry.insertAdjacentHTML("afterbegin", html);
+      favouriteBtn.addEventListener("click", function () {
+        console.log(cardName);
+      });
     });
 }
 
