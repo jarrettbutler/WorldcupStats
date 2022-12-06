@@ -35,6 +35,22 @@ searchBtn.addEventListener("click", function () {
     renderCountryMatch("NED");
   } else if (country === "Iran") {
     renderCountryMatch("IRN");
+  } else if (country === "Saudi arabia") {
+    renderCountryMatch("KSA");
+  } else if (country === "Spain") {
+    renderCountryMatch("ESP");
+  } else if (country === "Japan") {
+    renderCountryMatch("JPN");
+  } else if (country === "Costa rica") {
+    renderCountryMatch("CRC");
+  } else if (country === "Morocco") {
+    renderCountryMatch("MAR");
+  } else if (country === "Switzerland") {
+    renderCountryMatch("SUI");
+  } else if (country === "Cameroon") {
+    renderCountryMatch("CMR");
+  } else if (country === "Serbia") {
+    renderCountryMatch("SRB");
   } else {
     renderCountryMatch(country.slice(0, 3));
   }
