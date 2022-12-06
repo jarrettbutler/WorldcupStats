@@ -50,12 +50,16 @@
           <div class="column no-border">
             <p class="control has-icons-left col">
               <input
+                id="search-input"
                 class="input is-primary"
                 type="text"
                 placeholder="Search"
               />
             </p>
-            <button class="button is-danger is-outlined mt-2 btn">
+            <button
+              id="search-btn"
+              class="button is-danger is-outlined mt-2 btn"
+            >
               Search
             </button>
           </div>
@@ -112,10 +116,10 @@
                 <div
                   class="dropdown-content has-text-centered has-background-black drop-down"
                 >
-                  <a href="#" class="dropdown-item" name="ENG"> England </a>
-                  <a class="dropdown-item" name="IRN"> Iran </a>
-                  <a href="#" class="dropdown-item" name="USA"> USA </a>
-                  <a href="#" class="dropdown-item" name="WAL"> Wales </a>
+                  <a href="#" class="dropdown-item" name="ENG">England</a>
+                  <a class="dropdown-item" name="IRN">Iran</a>
+                  <a href="#" class="dropdown-item" name="USA">USA</a>
+                  <a href="#" class="dropdown-item" name="WAL">Wales</a>
                 </div>
               </div>
             </div>
@@ -141,12 +145,10 @@
                 <div
                   class="dropdown-content has-text-centered has-background-black has-text-warning drop-down"
                 >
-                  <a href="#" class="dropdown-item" name="POL"> Poland </a>
-                  <a class="dropdown-item" name="ARG"> Argentina </a>
-                  <a href="#" class="dropdown-item" name="KSA">
-                    Saudi Arabia
-                  </a>
-                  <a href="#" class="dropdown-item" name="MEX"> Mexico </a>
+                  <a href="#" class="dropdown-item" name="POL">Poland</a>
+                  <a class="dropdown-item" name="ARG">Argentina</a>
+                  <a href="#" class="dropdown-item" name="KSA">Saudi Arabia </a>
+                  <a href="#" class="dropdown-item" name="MEX">Mexico</a>
                 </div>
               </div>
             </div>
@@ -172,10 +174,10 @@
                 <div
                   class="dropdown-content has-text-centered has-background-black has-text-warning drop-down"
                 >
-                  <a href="#" class="dropdown-item" name="FRA"> France </a>
-                  <a class="dropdown-item" name="AUS"> Australia </a>
-                  <a href="#" class="dropdown-item" name="DEN"> Denmark </a>
-                  <a href="#" class="dropdown-item" name="TUN"> Tunisa </a>
+                  <a href="#" class="dropdown-item" name="FRA">France</a>
+                  <a class="dropdown-item" name="AUS">Australia</a>
+                  <a href="#" class="dropdown-item" name="DEN">Denmark</a>
+                  <a href="#" class="dropdown-item" name="TUN">Tunisa</a>
                 </div>
               </div>
             </div>
@@ -201,10 +203,10 @@
                 <div
                   class="dropdown-content has-text-centered has-background-black has-text-warning drop-down"
                 >
-                  <a href="#" class="dropdown-item" name="ESP"> Spain </a>
-                  <a class="dropdown-item" name="JPN"> Japan </a>
-                  <a href="#" class="dropdown-item" name="CRC"> Costa Rica </a>
-                  <a href="#" class="dropdown-item" name="GER"> Germany </a>
+                  <a href="#" class="dropdown-item" name="ESP">Spain</a>
+                  <a class="dropdown-item" name="JPN">Japan</a>
+                  <a href="#" class="dropdown-item" name="CRC">Costa Rica</a>
+                  <a href="#" class="dropdown-item" name="GER">Germany</a>
                 </div>
               </div>
             </div>
@@ -230,10 +232,10 @@
                 <div
                   class="dropdown-content has-text-centered has-background-black has-text-warning drop-down"
                 >
-                  <a href="#" class="dropdown-item" name="CRO"> Croatia </a>
-                  <a class="dropdown-item" name="MAR"> Morocco </a>
-                  <a href="#" class="dropdown-item" name="BEL"> Belgium </a>
-                  <a href="#" class="dropdown-item" name="CAN"> Canada </a>
+                  <a href="#" class="dropdown-item" name="CRO">Croatia</a>
+                  <a class="dropdown-item" name="MAR">Morocco</a>
+                  <a href="#" class="dropdown-item" name="BEL">Belgium</a>
+                  <a href="#" class="dropdown-item" name="CAN">Canada</a>
                 </div>
               </div>
             </div>
@@ -259,10 +261,10 @@
                 <div
                   class="dropdown-content has-text-centered has-background-black has-text-warning drop-down"
                 >
-                  <a href="#" class="dropdown-item" name="BRA"> Brazil </a>
-                  <a class="dropdown-item" name="SUI"> Switzerland </a>
-                  <a href="#" class="dropdown-item" name="CMR"> Cameroon </a>
-                  <a href="#" class="dropdown-item" name="SRB"> Serbia </a>
+                  <a href="#" class="dropdown-item" name="BRA">Brazil</a>
+                  <a class="dropdown-item" name="SUI">Switzerland</a>
+                  <a href="#" class="dropdown-item" name="CMR">Cameroon</a>
+                  <a href="#" class="dropdown-item" name="SRB">Serbia</a>
                 </div>
               </div>
             </div>
@@ -288,12 +290,12 @@
                 <div
                   class="dropdown-content has-text-centered has-background-black has-text-warning drop-down"
                 >
-                  <a href="#" class="dropdown-item" name="POR"> Portugal </a>
-                  <a class="dropdown-item" name="GHA"> Ghana </a>
-                  <a href="#" class="dropdown-item" name="URU"> Uruguay </a>
-                  <a href="#" class="dropdown-item" name="KOR">
-                    Korea Republic
-                  </a>
+                  <a href="#" class="dropdown-item" name="POR">Portugal</a>
+                  <a class="dropdown-item" name="GHA">Ghana</a>
+                  <a href="#" class="dropdown-item" name="URU">Uruguay</a>
+                  <a href="#" class="dropdown-item" name="KOR"
+                    >Korea Republic</a
+                  >
                 </div>
               </div>
             </div>
@@ -604,43 +606,50 @@
                     </table> -->
         </section>
 
-        <section class="columns">
+        <section id="get-main" class="columns is-hidden">
           <section class="country-info column">
-                        <h1 class="country-name">Canada <button class="favourite">⭐</button></h1>
-                        <img src="./develop/images/canadianflag.png"></img>
-                        <p class="fact1">Pop: 38.25million</p>
-                        <p class="fact2">Currency: Canadian$</p>
-                        <p class="fact3">Official languages: French and English</p>
-              
-                  <section class="column">
-                    <section class="matches columns is-mobile">
-                        <card class="box match1 grow column">
-                            <div class="round">
-                                <p class="round1">Round Robin</p>
-                            </div>
-                            <div class="date">
-                                <p class="date1">Nov 23, 2022</p>
-                            </div>
+            <section id="get-country">
+              <!-- <h1 class="country-name">Canada <button class="favourite">⭐</button></h1>
+            <img src="./develop/images/canadianflag.png"></img>
+            <p class="fact1">Pop: 38.25million</p>
+            <p class="fact2">Currency: Canadian$</p>
+            <p class="fact3">Official languages: Fand English</p> -->
+            </section>
+
+            <section class="column">
+              <section id="get-country--card" class="match columns is-mobile">
+                <!-- <card class="box match1 grow column">
                             <div class="teams">
-                            <p class="hometeam1">Belgium</p>
-                            <p class="awayteam1">Canada</p>
-                            </div>
-                            <div class="scores">
-                            <p class="hometeamscore1">1</p>
-                            <p>-</p>
-                            <p class="awayteamscore1">0</p>
+                              <div class="country">
+                                <img src="./develop/images/canadianflag.png" style="height:30px;"></img>
+                                <p class="hometeam1">Belgium</p>
+                                <p>2</p>
+                              </div>
+                              <div class="">
+                                <div class="round">
+                                  <p class="round1">Round Robin</p>
+                                </div>
+                                <div class="date">
+                                  <p class="date1">Nov 23, 2022</p>
+                                </div>
+                              </div>
+                              <div class="country">
+                                <img src="./develop/images/canadianflag.png" style="height:30px;"></img>
+                                <p class="awayteam1">Canada</p>
+                                <p>1</p>
+                              </div>
                             </div>
                         </card>
                         <card class="box match2 grow column">
                             <div class="round">
-                                <p class="round2"></p>
+                                <p class="round2">RRRRRR</p>
                             </div>
                             <div class="date">
-                                <p class="date2"></p>
+                                <p class="date2">Nov 23, 2022</p>
                             </div>
                             <div class="teams">
-                            <p class="hometeam2"></p>
-                            <p class="awayteam2"></p>
+                            <p class="hometeam2">Belgium</p>
+                            <p class="awayteam2">Canada</p>
                             </div>
                             <div class="scores">
                             <p class="hometeamscore2"></p>
@@ -664,10 +673,10 @@
                             <p>-</p>
                             <p class="awayteamscore3"></p>
                             </div>
-                        </card>
-                    </section>
-                  </section>
-                </section>  
+                        </card> -->
+              </section>
+            </section>
+          </section>
         </section>
       </div>
     </main>

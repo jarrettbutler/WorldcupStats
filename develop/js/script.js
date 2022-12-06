@@ -5,7 +5,13 @@
 const dropDowns = document.querySelectorAll(".dropdown");
 const dropItems = document.querySelectorAll(".dropdown-item");
 const groupsHtml = document.getElementById("groups-container");
+const getMain = document.getElementById("get-main");
+const getCountry = document.getElementById("get-country");
+const getCountryCard = document.getElementById("get-country--card");
+const searchInput = document.getElementById("search-input");
+const searchBtn = document.getElementById("search-btn");
 
+let flag = [];
 for (let i = 0; i < dropDowns.length; i++) {
   dropDowns[i].addEventListener("click", function () {
     dropDowns[i].classList.toggle("is-active");
@@ -21,6 +27,21 @@ for (let i = 0; i < dropDowns.length; i++) {
 
 // ======================================================
 // ---------------Render All Groups of World Cup 2022 -------------------
+searchBtn.addEventListener("click", function () {
+  const value = searchInput.value.toLowerCase();
+  const country = value.slice(0, 1).toUpperCase() + value.slice(1);
+  renderMatchHead(country);
+  if (country === "Netherlands") {
+    renderCountryMatch("NED");
+  } else if (country === "Iran") {
+    renderCountryMatch("IRN");
+  } else {
+    renderCountryMatch(country.slice(0, 3));
+  }
+
+  searchInput.value = "";
+});
+
 const getData = function (url) {
   fetch(url).then(function (response) {
     response.json().then(function (data) {
@@ -80,24 +101,111 @@ const getData = function (url) {
 //   .then((response) => response.json())
 //   .then((data) => console.log(data));
 
-// fetch(`https://restcountries.com/v2/name/Netherlands`)
+// fetch(`https://restcountries.com/v2/name/USA`)
 //   .then((response) => response.json())
 //   .then((data) => {
-//     console.log(data);
+
 //   });
 
 for (let i = 0; i < dropItems.length; i++) {
   dropItems[i].addEventListener("click", function () {
-    handleCountryNameClick(dropItems[i].getAttribute("name"));
+    renderMatchHead(dropItems[i].textContent);
+    renderCountryMatch(dropItems[i].getAttribute("name"));
   });
 }
-function handleCountryNameClick(countryName) {
-  fetch(`https://copa22.medeiro.tech/teams/${countryName}/matches`)
+
+function renderMatchHead(countryName) {
+  console.log(countryName);
+  getMain.classList.remove("is-hidden");
+
+  getCountry.innerHTML = "";
+  fetch(`https://restcountries.com/v2/name/${countryName}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
+      const html = `
+     <h1 class="country-name">${
+       data[0].name
+     } <button class="favourite">⭐</ button></h1>
+     <img src=${data[0].flag}></img>
+     <p class="fact1">Population: ${(data[0].population / 1000000).toFixed(
+       3
+     )} million</p>
+      <p class="fact2">Currency: ${data[0].currencies[0].code}(${
+        data[0].currencies[0].symbol
+      }) </p>
+      <p class="fact3">Official languages: ${data[0].languages[0].name}</p>
+    
+      `;
+      getCountry.insertAdjacentHTML("afterbegin", html);
     });
 }
+
+function renderCountryMatch(countryCode) {
+  getCountryCard.innerHTML = "";
+
+  fetch(`https://copa22.medeiro.tech/teams/${countryCode}/matches`)
+    .then((response) => response.json())
+    .then(function (data) {
+      for (let i = 0; i < data.length; i++) {
+        console.log(data[i]);
+        const html = `
+         <card class="box match1 grow column">
+          <div class="teams">
+            <div class="country">
+            <img src="https://countryflagsapi.com/svg/${
+              data[i].homeTeam.name
+            }" style="height:30px;"></img>
+              <p class="hometeam1">${data[i].homeTeam.name}</p>
+              <p>${data[i].homeTeam.goals}</p>
+            </div>
+            <div class="">
+              <div class="round">
+                <p class="round1">${data[i].stageName}</p>
+              </div>
+              <div class="round">
+              <p class="round1">${data[i].location}</p>
+            </div>              
+            <div class="date">
+              <p class="date1">${data[i].date.split("T")[0]}</p>
+            </div>
+            </div>
+            <div class="country">
+               <img src="https://countryflagsapi.com/svg/${
+                 data[i].awayTeam.name
+               }" style="height:30px;"></img>
+               <p class="awayteam1">${data[i].awayTeam.name}</p>
+               <p>${data[i].awayTeam.goals}</p>
+             </div>
+          </div>
+         </card>
+        
+        `;
+
+        getCountryCard.insertAdjacentHTML("beforeend", html);
+      }
+    });
+}
+
+// function renderFlags(data) {}
+
+// function getFlag(countryName) {
+//   fetch(`https://restcountries.com/v2/name/${countryName}`)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       flag = data[0].flag;
+//     });
+// }
+// getFlag("Canada");
+// console.log(flag);
+
+// function renderMatches(countryName) {
+//   fetch(`https://restcountries.com/v2/name/${countryName}`)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       console.log(data[i]);
+//     });
+// }
 
 // `const data1 = async function fetchCountryName(url) {
 //   const response = await fetch(url);
@@ -234,103 +342,102 @@ function handleCountryNameClick(countryName) {
 // }
 
 //the country name should be in 3 characters
-function getMatchesByCountry(countryName) {
-  var reqURL = "https://copa22.medeiro.tech/teams/" + countryName + "/matches";
-  fetch(reqURL)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log("Matches:");
-      console.log(data);
-      //for each match
-      for (var i = 0; i < data.length; i++) {
-        var homeCountryName = data[i]["homeTeam"]["name"];
-        var homeCountryApprev = data[i]["homeTeam"]["country"];
-        var homeCountryGoals = data[i]["homeTeam"]["goals"];
-        // var homeCountryInfo = getCountryInfo(homeCountryName);
-        var homeFlag = "";
+// function getMatchesByCountry(countryName) {
+//   var reqURL = "https://copa22.medeiro.tech/teams/" + countryName + "/matches";
+//   fetch(reqURL)
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log("Matches:");
+//       console.log(data);
+//       //for each match
+//       for (var i = 0; i < data.length; i++) {
+//         var homeCountryName = data[i]["homeTeam"]["name"];
+//         var homeCountryApprev = data[i]["homeTeam"]["country"];
+//         var homeCountryGoals = data[i]["homeTeam"]["goals"];
+//         // var homeCountryInfo = getCountryInfo(homeCountryName);
+//         var homeFlag = "";
 
-        var awayCountryName = data[i]["awayTeam"]["name"];
-        var awayCountryApprev = data[i]["awayTeam"]["country"];
-        var awayCountryGoals = data[i]["awayTeam"]["goals"];
+//         var awayCountryName = data[i]["awayTeam"]["name"];
+//         var awayCountryApprev = data[i]["awayTeam"]["country"];
+//         var awayCountryGoals = data[i]["awayTeam"]["goals"];
 
-        var awayFlag = "";
+//         var awayFlag = "";
 
-        //render
-        const html = `
+//         //render
+//         const html = `
 
-           <section class="country-info column">
-               <h1 class="country-name">Canada <button class="favourite">⭐</button></h1>
-               <img src="./develop/images/canadianflag.png"></img>
-               <p class="fact1">Pop: 38.25million</p>
-               <p class="fact2">Currency: Canadian$</p>
-               <p class="fact3">Official languages: French and English</p>
+//            <section class="country-info column">
+//                <h1 class="country-name">Canada <button class="favourite">⭐</button></h1>
+//                <img src="./develop/images/canadianflag.png"></img>
+//                <p class="fact1">Pop: 38.25million</p>
+//                <p class="fact2">Currency: Canadian$</p>
+//                <p class="fact3">Official languages: French and English</p>
 
-           <section class="column">
-             <section class="matches columns is-mobile">
-                 <card class="box match1 grow column">
-                     <div class="round">
-                         <p class="round1">Round Robin</p>
-                     </div>
-                     <div class="date">
-                         <p class="date1">Nov 23, 2022</p>
-                     </div>
-                     <div class="teams">
-                     <p class="hometeam1">Belgium</p>
-                     <p class="awayteam1">Canada</p>
-                     </div>
-                     <div class="scores">
-                     <p class="hometeamscore1">1</p>
-                     <p>-</p>
-                     <p class="awayteamscore1">0</p>
-                     </div>
-                 </card>
-                 <card class="box match2 grow column">
-                     <div class="round">
-                         <p class="round2"></p>
-                     </div>
-                     <div class="date">
-                         <p class="date2"></p>
-                     </div>
-                     <div class="teams">
-                     <p class="hometeam2"></p>
-                     <p class="awayteam2"></p>
-                     </div>
-                     <div class="scores">
-                     <p class="hometeamscore2"></p>
-                     <p>-</p>
-                     <p class="awayteamscore2"></p>
-                     </div>
-                 </card>
-                 <card class="box match3 grow column">
-                     <div class="round">
-                         <p class="round3"></p>
-                     </div>
-                     <div class="date">
-                         <p class="date3"></p>
-                     </div>
-                     <div class="teams">
-                     <p class="hometeam3"></p>
-                     <p class="awayteam3"></p>
-                     </div>
-                     <div class="scores">
-                     <p class="hometeamscore3"></p>
-                     <p>-</p>
-                     <p class="awayteamscore3"></p>
-                     </div>
-                 </card>
-             </section>
-           </section>
-         </section>  
+//            <section class="column">
+//              <section class="matches columns is-mobile">
+//                  <card class="box match1 grow column">
+//                      <div class="round">
+//                          <p class="round1">Round Robin</p>
+//                      </div>
+//                      <div class="date">
+//                          <p class="date1">Nov 23, 2022</p>
+//                      </div>
+//                      <div class="teams">
+//                      <p class="hometeam1">Belgium</p>
+//                      <p class="awayteam1">Canada</p>
+//                      </div>
+//                      <div class="scores">
+//                      <p class="hometeamscore1">1</p>
+//                      <p>-</p>
+//                      <p class="awayteamscore1">0</p>
+//                      </div>
+//                  </card>
+//                  <card class="box match2 grow column">
+//                      <div class="round">
+//                          <p class="round2"></p>
+//                      </div>
+//                      <div class="date">
+//                          <p class="date2"></p>
+//                      </div>
+//                      <div class="teams">
+//                      <p class="hometeam2"></p>
+//                      <p class="awayteam2"></p>
+//                      </div>
+//                      <div class="scores">
+//                      <p class="hometeamscore2"></p>
+//                      <p>-</p>
+//                      <p class="awayteamscore2"></p>
+//                      </div>
+//                  </card>
+//                  <card class="box match3 grow column">
+//                      <div class="round">
+//                          <p class="round3"></p>
+//                      </div>
+//                      <div class="date">
+//                          <p class="date3"></p>
+//                      </div>
+//                      <div class="teams">
+//                      <p class="hometeam3"></p>
+//                      <p class="awayteam3"></p>
+//                      </div>
+//                      <div class="scores">
+//                      <p class="hometeamscore3"></p>
+//                      <p>-</p>
+//                      <p class="awayteamscore3"></p>
+//                      </div>
+//                  </card>
+//              </section>
+//            </section>
+//          </section>
 
-        
-        `;
-      }
-    });
+//         `;
+//       }
+//     });
 
-  //return matchesByCountry;
-}
+//return matchesByCountry;
+// }
 
 // var country = getCountryInfo("canada");
 // console.log("============contry info==============");
