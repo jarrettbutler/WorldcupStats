@@ -12,7 +12,7 @@ const searchInput = document.getElementById("search-input");
 const searchBtn = document.getElementById("search-btn");
 const favouriteBtn = document.getElementById("bookmark-btn");
 const cardName = document.querySelector(".country-name");
-let bookmarks = [];
+let favList = [];
 for (let i = 0; i < dropDowns.length; i++) {
   dropDowns[i].addEventListener("click", function () {
     dropDowns[i].classList.toggle("is-active");
@@ -21,6 +21,58 @@ for (let i = 0; i < dropDowns.length; i++) {
 }
 
 // ======================================================
+//----------Load the favorite Countries List---------------
+var favCountries = localStorage.getItem("FavCountry");
+var favCountriesList = [];
+if(favCountries != null){
+  favCountriesList = favCountries.split(",");
+}
+  
+console.log("loadimg the fav list");
+console.log(favCountriesList);
+
+var listElem = document.getElementById("favListId");
+// var listElem = document.createElement("ul");
+
+for(var i = 0; i<favCountriesList.length; i++){
+
+  const html =`<li><button class="" >${favCountriesList[i]}</button></li>`
+  listElem.insertAdjacentHTML('beforeend', html);
+  
+}
+
+listElem.addEventListener("click", function(e){
+  console.log(e.target.textContent);
+  renderMatchHead(e.target.textContent);
+  var country = e.target.textContent; 
+  console.log(country);
+  if (country === "Netherlands") {
+    renderCountryMatch("NED");
+  } else if (country === "Iran") {
+    renderCountryMatch("IRN");
+  } else if (country === "Saudi arabia") {
+    renderCountryMatch("KSA");
+  } else if (country === "Spain") {
+    renderCountryMatch("ESP");
+  } else if (country === "Japan") {
+    renderCountryMatch("JPN");
+  } else if (country === "Costa rica") {
+    renderCountryMatch("CRC");
+  } else if (country === "Morocco") {
+    renderCountryMatch("MAR");
+  } else if (country === "Switzerland") {
+    renderCountryMatch("SUI");
+  } else if (country === "Cameroon") {
+    renderCountryMatch("CMR");
+  } else if (country === "Serbia") {
+    renderCountryMatch("SRB");
+  } else {
+    console.log(country);
+    renderCountryMatch(country.slice(0, 3));
+  }
+  });
+
+
 // ---------------Render All Groups of World Cup 2022 -------------------
 searchBtn.addEventListener("click", function () {
   const value = searchInput.value.toLowerCase();
@@ -135,10 +187,27 @@ function renderMatchHead(countryName) {
       getCountry.insertAdjacentHTML("afterbegin", html);
       favouriteBtn.addEventListener("click", function () {
         console.log(cardName);
+
+        handleSaveCountryInFavorites(countryName);
+
       });
     });
 }
 
+function handleSaveCountryInFavorites(countryName){
+  console.log("handle Save Country in the localstorage");
+    favList = localStorage.getItem("FavCountry");
+  console.log(favList)
+  if ( favList == null){
+    localStorage.setItem("FavCountry", countryName);
+  }else{
+    if(!favList.includes(countryName)){
+      
+      localStorage.setItem("FavCountry", favList + "," + countryName);
+    }
+  }
+
+}
 function renderCountryMatch(countryCode) {
   getCountryCard.innerHTML = "";
 
