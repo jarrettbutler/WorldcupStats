@@ -45,9 +45,11 @@ function renderFavList() {
 }
 
 function clearFavList() {
+
+  favCountriesList = [];
   localStorage.clear();
   listElem.innerHTML = "";
-  favCountriesList = [];
+
 }
 
 clearFavListBtn.addEventListener("click", clearFavList);
@@ -207,6 +209,9 @@ function handleSaveCountryInFavorites(countryName) {
   } else {
     favCountriesList.push(countryName);
     localStorage.setItem("favCountry", JSON.stringify(favCountriesList));
+
+    favCountriesList = [];
+
     favCountriesList = JSON.parse(localStorage.getItem("favCountry"));
 
     renderFavList();

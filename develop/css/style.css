@@ -90,26 +90,30 @@ header h1 {
   color: white;
 }
 
-.column{
+
+.column {
   text-align: center;
 }
 
-h2{
-font-size: 55px;
-font-weight: bolder;
+h2 {
+  font-size: 55px;
+  font-weight: bolder;
 }
 
-li{
+li {
   list-style: none;
 }
 
-button{
+button {
+
   color: white;
   background-color: black;
   cursor: pointer;
 }
-button:hover{
- color: gold;
+
+button:hover {
+  color: gold;
+
 }
 
 .table {
