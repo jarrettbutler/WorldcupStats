@@ -90,6 +90,7 @@ header h1 {
   color: white;
 }
 
+
 .column {
   text-align: center;
 }
@@ -104,12 +105,15 @@ li {
 }
 
 button {
+
   color: white;
   background-color: black;
   cursor: pointer;
 }
+
 button:hover {
   color: gold;
+
 }
 
 .table {
