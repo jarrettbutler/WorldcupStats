@@ -11,8 +11,11 @@ const getCountryCard = document.getElementById("get-country--card");
 const searchInput = document.getElementById("search-input");
 const searchBtn = document.getElementById("search-btn");
 const favouriteBtn = document.getElementById("bookmark-btn");
-const cardName = document.querySelector(".country-name");
-let favList = [];
+const cardName = document.getElementById("coun-name");
+const listElem = document.getElementById("favListId");
+const clearFavListBtn = document.getElementById("clear");
+
+let favCountriesList = [];
 for (let i = 0; i < dropDowns.length; i++) {
   dropDowns[i].addEventListener("click", function () {
     dropDowns[i].classList.toggle("is-active");
@@ -20,32 +23,39 @@ for (let i = 0; i < dropDowns.length; i++) {
   });
 }
 
+if (localStorage.getItem("favCountry") === null) {
+} else {
+  favCountriesList = JSON.parse(localStorage.getItem("favCountry"));
+}
 // ======================================================
-//----------Load the favorite Countries List---------------
-var favCountries = localStorage.getItem("FavCountry");
-var favCountriesList = [];
-if(favCountries != null){
-  favCountriesList = favCountries.split(",");
-}
-  
-console.log("loadimg the fav list");
-console.log(favCountriesList);
 
-var listElem = document.getElementById("favListId");
-// var listElem = document.createElement("ul");
-
-for(var i = 0; i<favCountriesList.length; i++){
-
-  const html =`<li><button class="" >${favCountriesList[i]}</button></li>`
-  listElem.insertAdjacentHTML('beforeend', html);
-  
+if (favCountriesList.length === 0) {
+} else {
+  renderFavList();
 }
 
-listElem.addEventListener("click", function(e){
-  console.log(e.target.textContent);
+function renderFavList() {
+  listElem.innerHTML = "";
+  // favCountriesList = JSON.parse(localStorage.getItem("favCountry"));
+
+  for (var i = 0; i < favCountriesList.length; i++) {
+    const html = `<li><button>${favCountriesList[i]}</button></li>`;
+    listElem.insertAdjacentHTML("beforeend", html);
+  }
+}
+
+function clearFavList() {
+  favCountriesList = [];
+  localStorage.clear();
+  listElem.innerHTML = "";
+}
+
+clearFavListBtn.addEventListener("click", clearFavList);
+
+listElem.addEventListener("click", function (e) {
   renderMatchHead(e.target.textContent);
-  var country = e.target.textContent; 
-  console.log(country);
+  var country = e.target.textContent;
+
   if (country === "Netherlands") {
     renderCountryMatch("NED");
   } else if (country === "Iran") {
@@ -67,11 +77,9 @@ listElem.addEventListener("click", function(e){
   } else if (country === "Serbia") {
     renderCountryMatch("SRB");
   } else {
-    console.log(country);
     renderCountryMatch(country.slice(0, 3));
   }
-  });
-
+});
 
 // ---------------Render All Groups of World Cup 2022 -------------------
 searchBtn.addEventListener("click", function () {
@@ -109,6 +117,7 @@ const getData = function (url) {
   fetch(url).then(function (response) {
     response.json().then(function (data) {
       groupsHtml.classList.remove("is-hidden");
+
       for (let i = 0; i < data.length; i++) {
         const html = `
           <table class="table is-bordered column grow">
@@ -165,18 +174,8 @@ for (let i = 0; i < dropItems.length; i++) {
 }
 
 function renderMatchHead(countryName) {
-  console.log(countryName);
   getMain.classList.remove("is-hidden");
   groupsHtml.classList.add("is-hidden");
-
-  favouriteBtn.addEventListener("click", function () {
-    if (bookmarks.includes(countryName)) {
-    } else {
-      bookmarks.push(countryName);
-    }
-
-    console.log(bookmarks);
-  });
 
   getCountry.innerHTML = "";
   fetch(`https://restcountries.com/v2/name/${countryName}`)
@@ -198,28 +197,21 @@ function renderMatchHead(countryName) {
       getCountry.insertAdjacentHTML("afterbegin", html);
 
       favouriteBtn.addEventListener("click", function () {
-        console.log(cardName);
-
         handleSaveCountryInFavorites(countryName);
-
       });
-
     });
 }
 
-function handleSaveCountryInFavorites(countryName){
-  console.log("handle Save Country in the localstorage");
-    favList = localStorage.getItem("FavCountry");
-  console.log(favList)
-  if ( favList == null){
-    localStorage.setItem("FavCountry", countryName);
-  }else{
-    if(!favList.includes(countryName)){
-      
-      localStorage.setItem("FavCountry", favList + "," + countryName);
-    }
-  }
+function handleSaveCountryInFavorites(countryName) {
+  if (favCountriesList.includes(countryName)) {
+  } else {
+    favCountriesList.push(countryName);
+    localStorage.setItem("favCountry", JSON.stringify(favCountriesList));
+    favCountriesList = [];
+    favCountriesList = JSON.parse(localStorage.getItem("favCountry"));
 
+    renderFavList();
+  }
 }
 function renderCountryMatch(countryCode) {
   getCountryCard.innerHTML = "";
@@ -228,7 +220,6 @@ function renderCountryMatch(countryCode) {
     .then((response) => response.json())
     .then(function (data) {
       for (let i = 0; i < data.length; i++) {
-        console.log(data[i]);
         const html = `
          <card class="box match1 grow column">
           <div class="teams">

@@ -1,639 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>World Cup Statistics</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Monoton&family=Train+One&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
-    <link rel="stylesheet" href="./develop/css/style.css" />
-  </head>
 
-  <body>
-    <header>
-      <nav
-        class="navbar is-black is-justify-content-space-between"
-        role="navigation"
-        aria-label="main navigation"
-      >
-        <div class="navbar-brand">
-          <h1>⚽2022 FIFA World Cup</h1>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Cup Statistics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Train+One&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link rel="stylesheet" href="./develop/css/style.css" />
+</head>
 
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link"> ⭐Favourites </a>
-
-          <div id="favListId" class="navbar-dropdown">
-
-          <div class="navbar-dropdown">
-            <ul>
-              <li>Canada</li>
-              <li>Germany</li>
-              <li>Croatia</li>
-              <li>Spain</li>
-            </ul>
-
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <!-- =========Side nav Bar ========== -->
-
-    <main class="colums is-flex is-flex-direction-row">
-      <nav
-        class="menu column is-2 columns has-background-black side-nav p-0 m-0"
-      >
-        <article class="panel col ml-2">
-          <p class="panel-heading col has-text-centered mt-3">
-            Search for the Country
-          </p>
-
-          <div class="column no-border">
-            <p class="control has-icons-left col">
-              <input
-                id="search-input"
-                class="input is-primary"
-                type="text"
-                placeholder="Search"
-              />
-            </p>
-            <button
-              id="search-btn"
-              class="button is-danger is-outlined mt-2 btn"
-            >
-              Search
-            </button>
-          </div>
-
-          <p class="mb-3 has-text-centered no-border">GROUPS</p>
-          <section id="groups" class="mb-3">
-            <div
-              id="group-a"
-              class="dropdown has-background-black group-btn btn-mar"
-            >
-              <div class="dropdown-trigger has-background-black group-btn">
-                <button
-                  class="button has-background-black has-text-grey-lighter group-btn ml-2"
-                  aria-haspopup="true"
-                  aria-controls="dropdown-menu"
-                >
-                  <span>GROUP-<span class="st-span">A</span></span>
-                </button>
-              </div>
-              <div
-                class="dropdown-menu drop-size"
-                id="dropdown-menu"
-                role="menu"
-              >
-                <div
-                  class="dropdown-content has-text-centered has-background-black has-text-warning drop-down"
-                >
-                  <a href="#" class="dropdown-item" name="NED">Netherlands</a>
-                  <a class="dropdown-item" name="ECU"> Ecuador </a>
-                  <a href="#" class="dropdown-item" name="SEN"> Senegal </a>
-                  <a href="#" class="dropdown-item" name="QAT"> Qatar </a>
-                </div>
-              </div>
-            </div>
-
-            <div
-              id="group-b"
-              class="dropdown has-background-black group-btn btn-mar"
-            >
-              <div class="dropdown-trigger has-background-black group-btn">
-                <button
-                  class="button has-background-black has-text-grey-lighter group-btn ml-2"
-                  aria-haspopup="true"
-                  aria-controls="dropdown-menu"
-                >
-                  <span>GROUP-<span class="st-span">B</span></span>
-                </button>
-              </div>
-              <div
-                class="dropdown-menu drop-size"
-                id="dropdown-menu"
-                role="menu"
-              >
-                <div
-                  class="dropdown-content has-text-centered has-background-black drop-down"
-                >
-                  <a href="#" class="dropdown-item" name="ENG">England</a>
-                  <a class="dropdown-item" name="IRN">Iran</a>
-                  <a href="#" class="dropdown-item" name="USA">USA</a>
-                  <a href="#" class="dropdown-item" name="WAL">Wales</a>
-                </div>
-              </div>
-            </div>
-
-            <div
-              id="group-c"
-              class="dropdown has-background-black group-btn btn-mar"
-            >
-              <div class="dropdown-trigger has-background-black group-btn">
-                <button
-                  class="button has-background-black has-text-grey-lighter group-btn ml-2"
-                  aria-haspopup="true"
-                  aria-controls="dropdown-menu"
-                >
-                  <span>GROUP-<span class="st-span">C</span></span>
-                </button>
-              </div>
-              <div
-                class="dropdown-menu drop-size"
-                id="dropdown-menu"
-                role="menu"
-              >
-                <div
-                  class="dropdown-content has-text-centered has-background-black has-text-warning drop-down"
-                >
-                  <a href="#" class="dropdown-item" name="POL">Poland</a>
-                  <a class="dropdown-item" name="ARG">Argentina</a>
-                  <a href="#" class="dropdown-item" name="KSA">Saudi Arabia </a>
-                  <a href="#" class="dropdown-item" name="MEX">Mexico</a>
-                </div>
-              </div>
-            </div>
-
-            <div
-              id="group-d"
-              class="dropdown has-background-black group-btn btn-mar"
-            >
-              <div class="dropdown-trigger has-background-black group-btn">
-                <button
-                  class="button has-background-black has-text-grey-lighter group-btn ml-2"
-                  aria-haspopup="true"
-                  aria-controls="dropdown-menu"
-                >
-                  <span>GROUP-<span class="st-span">D</span></span>
-                </button>
-              </div>
-              <div
-                class="dropdown-menu drop-size"
-                id="dropdown-menu"
-                role="menu"
-              >
-                <div
-                  class="dropdown-content has-text-centered has-background-black has-text-warning drop-down"
-                >
-                  <a href="#" class="dropdown-item" name="FRA">France</a>
-                  <a class="dropdown-item" name="AUS">Australia</a>
-                  <a href="#" class="dropdown-item" name="DEN">Denmark</a>
-                  <a href="#" class="dropdown-item" name="TUN">Tunisa</a>
-                </div>
-              </div>
-            </div>
-
-            <div
-              id="group-e"
-              class="dropdown has-background-black group-btn btn-mar"
-            >
-              <div class="dropdown-trigger has-background-black group-btn">
-                <button
-                  class="button has-background-black has-text-grey-lighter group-btn ml-2"
-                  aria-haspopup="true"
-                  aria-controls="dropdown-menu"
-                >
-                  <span>GROUP-<span class="st-span">E</span></span>
-                </button>
-              </div>
-              <div
-                class="dropdown-menu drop-size"
-                id="dropdown-menu"
-                role="menu"
-              >
-                <div
-                  class="dropdown-content has-text-centered has-background-black has-text-warning drop-down"
-                >
-                  <a href="#" class="dropdown-item" name="ESP">Spain</a>
-                  <a class="dropdown-item" name="JPN">Japan</a>
-                  <a href="#" class="dropdown-item" name="CRC">Costa Rica</a>
-                  <a href="#" class="dropdown-item" name="GER">Germany</a>
-                </div>
-              </div>
-            </div>
-
-            <div
-              id="group-f"
-              class="dropdown has-background-black group-btn btn-mar"
-            >
-              <div class="dropdown-trigger has-background-black group-btn">
-                <button
-                  class="button has-background-black has-text-grey-lighter group-btn ml-2"
-                  aria-haspopup="true"
-                  aria-controls="dropdown-menu"
-                >
-                  <span>GROUP-<span class="st-span">F</span></span>
-                </button>
-              </div>
-              <div
-                class="dropdown-menu drop-size"
-                id="dropdown-menu"
-                role="menu"
-              >
-                <div
-                  class="dropdown-content has-text-centered has-background-black has-text-warning drop-down"
-                >
-                  <a href="#" class="dropdown-item" name="CRO">Croatia</a>
-                  <a class="dropdown-item" name="MAR">Morocco</a>
-                  <a href="#" class="dropdown-item" name="BEL">Belgium</a>
-                  <a href="#" class="dropdown-item" name="CAN">Canada</a>
-                </div>
-              </div>
-            </div>
-
-            <div
-              id="group-g"
-              class="dropdown has-background-black group-btn btn-mar"
-            >
-              <div class="dropdown-trigger has-background-black group-btn">
-                <button
-                  class="button has-background-black has-text-grey-lighter group-btn ml-2"
-                  aria-haspopup="true"
-                  aria-controls="dropdown-menu"
-                >
-                  <span>GROUP-<span class="st-span">G</span></span>
-                </button>
-              </div>
-              <div
-                class="dropdown-menu drop-size"
-                id="dropdown-menu"
-                role="menu"
-              >
-                <div
-                  class="dropdown-content has-text-centered has-background-black has-text-warning drop-down"
-                >
-                  <a href="#" class="dropdown-item" name="BRA">Brazil</a>
-                  <a class="dropdown-item" name="SUI">Switzerland</a>
-                  <a href="#" class="dropdown-item" name="CMR">Cameroon</a>
-                  <a href="#" class="dropdown-item" name="SRB">Serbia</a>
-                </div>
-              </div>
-            </div>
-
-            <div
-              id="group-h"
-              class="dropdown has-background-black group-btn btn-mar"
-            >
-              <div class="dropdown-trigger has-background-black group-btn">
-                <button
-                  class="button has-background-black has-text-grey-lighter group-btn ml-2"
-                  aria-haspopup="true"
-                  aria-controls="dropdown-menu"
-                >
-                  <span>GROUP-<span class="st-span">H</span></span>
-                </button>
-              </div>
-              <div
-                class="dropdown-menu drop-size"
-                id="dropdown-menu"
-                role="menu"
-              >
-                <div
-                  class="dropdown-content has-text-centered has-background-black has-text-warning drop-down"
-                >
-                  <a href="#" class="dropdown-item" name="POR">Portugal</a>
-                  <a class="dropdown-item" name="GHA">Ghana</a>
-                  <a href="#" class="dropdown-item" name="URU">Uruguay</a>
-                  <a href="#" class="dropdown-item" name="KOR"
-                    >Korea Republic</a
-                  >
-                </div>
-              </div>
-            </div>
-          </section>
-        </article>
-      </nav>
-
-      <div class="column" style="height: inherit">
-        <section
-          id="groups-container"
-          class="columns is-multiline is-one-quarter"
-        >
-          <!-- <table class="table is-bordered column grow">
-                        <tr>
-                            <th class="groupA">Group A</th>
-                            <th>Wins</th>
-                            <th>Draws</th>
-                            <th>Loses</th>
-                            <th>Points</th>
-                        </tr>
-                        <tr>
-                            <td class="countryA1">Netherlands</td>
-                            <td class="winsA1">1</td>
-                            <td class="drawsA1">1</td>
-                            <td class="losesA1">0</td>
-                            <td class="pointsA1">4</td>
-                        </tr>
-                        <tr>
-                            <td class="countryA2">Ecuador</td>
-                            <td class="winsA2">1</td>
-                            <td class="drawsA2">1</td>
-                            <td class="losesA2">0</td>
-                            <td class="pointsA2">4</td>
-                        </tr>
-                        <tr>
-                            <td class="countryA3">Senegal</td>
-                            <td class="winsA3">1</td>
-                            <td class="drawsA3">0</td>
-                            <td class="losesA3">1</td>
-                            <td class="pointsA3">4</td>
-                        </tr>
-                        <tr>
-                            <td class="countryA4">Qatar</td>
-                            <td class="winsA4">0</td>
-                            <td class="drawsA4">0</td>
-                            <td class="losesA4">2</td>
-                            <td class="pointsA4">0</td>
-                        </tr>
-                    </table>
-                    <table class="table is-bordered column grow ">
-                        <tr>
-                            <th class="groupB"></th>
-                            <th>Wins</th>
-                            <th>Draws</th>
-                            <th>Loses</th>
-                            <th>Points</th>
-                        </tr>
-                        <tr>
-                            <td class="countryB1"></td>
-                            <td class="winsB1"></td>
-                            <td class="drawsB1"></td>
-                            <td class="losesB1"></td>
-                            <td class="pointsB1"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryB2"></td>
-                            <td class="winsB2"></td>
-                            <td class="drawsB2"></td>
-                            <td class="losesB2"></td>
-                            <td class="pointsB2"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryB3"></td>
-                            <td class="winsB3"></td>
-                            <td class="drawsB3"></td>
-                            <td class="losesB3"></td>
-                            <td class="pointsB3"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryB4"></td>
-                            <td class="winsB4"></td>
-                            <td class="drawsB4"></td>
-                            <td class="losesB4"></td>
-                            <td class="pointsB4"></td>
-                        </tr>
-                    </table>
-                    <table class="table is-bordered column grow">
-                        <tr>
-                            <th class="groupC"></th>
-                            <th>Wins</th>
-                            <th>Draws</th>
-                            <th>Loses</th>
-                            <th>Points</th>
-                        </tr>
-                        <tr>
-                            <td class="countryC1"></td>
-                            <td class="winsC1"></td>
-                            <td class="drawsC1"></td>
-                            <td class="losesC1"></td>
-                            <td class="pointsC1"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryC2"></td>
-                            <td class="winsC2"></td>
-                            <td class="drawsC2"></td>
-                            <td class="losesC2"></td>
-                            <td class="pointsC2"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryC3"></td>
-                            <td class="winsC3"></td>
-                            <td class="drawsC3"></td>
-                            <td class="losesC3"></td>
-                            <td class="pointsC3"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryC4"></td>
-                            <td class="winsC4"></td>
-                            <td class="drawsC4"></td>
-                            <td class="losesC4"></td>
-                            <td class="pointsC4"></td>
-                        </tr>
-                    </table>
-                    <table class="table is-bordered column grow">
-                        <tr>
-                            <th class="groupC"></th>
-                            <th>Wins</th>
-                            <th>Draws</th>
-                            <th>Loses</th>
-                            <th>Points</th>
-                        </tr>
-                        <tr>
-                            <td class="countryC1"></td>
-                            <td class="winsC1"></td>
-                            <td class="drawsC1"></td>
-                            <td class="losesC1"></td>
-                            <td class="pointsC1"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryC2"></td>
-                            <td class="winsC2"></td>
-                            <td class="drawsC2"></td>
-                            <td class="losesC2"></td>
-                            <td class="pointsC2"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryC3"></td>
-                            <td class="winsC3"></td>
-                            <td class="drawsC3"></td>
-                            <td class="losesC3"></td>
-                            <td class="pointsC3"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryC4"></td>
-                            <td class="winsC4"></td>
-                            <td class="drawsC4"></td>
-                            <td class="losesC4"></td>
-                            <td class="pointsC4"></td>
-                        </tr>
-                    </table>
-                    <table class="table is-bordered column grow">
-                        <tr>
-                            <th class="groupD"></th>
-                            <th>Wins</th>
-                            <th>Draws</th>
-                            <th>Loses</th>
-                            <th>Points</th>
-                        </tr>
-                        <tr>
-                            <td class="countryD1"></td>
-                            <td class="winsD1"></td>
-                            <td class="drawsD1"></td>
-                            <td class="losesD1"></td>
-                            <td class="pointsD1"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryD2"></td>
-                            <td class="winsD2"></td>
-                            <td class="drawsD2"></td>
-                            <td class="losesD2"></td>
-                            <td class="pointsD2"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryD3"></td>
-                            <td class="winsD3"></td>
-                            <td class="drawsD3"></td>
-                            <td class="losesD3"></td>
-                            <td class="pointsD3"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryD4"></td>
-                            <td class="winsD4"></td>
-                            <td class="drawsD4"></td>
-                            <td class="losesD4"></td>
-                            <td class="pointsD4"></td>
-                        </tr>
-                    </table>
-                    <table class="table is-bordered column grow">
-                        <tr>
-                            <th class="groupE"></th>
-                            <th>Wins</th>
-                            <th>Draws</th>
-                            <th>Loses</th>
-                            <th>Points</th>
-                        </tr>
-                        <tr>
-                            <td class="countryE1"></td>
-                            <td class="winsE1"></td>
-                            <td class="drawsE1"></td>
-                            <td class="losesE1"></td>
-                            <td class="pointsE1"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryE2"></td>
-                            <td class="winsE2"></td>
-                            <td class="drawsE2"></td>
-                            <td class="losesE2"></td>
-                            <td class="pointsE2"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryE3"></td>
-                            <td class="winsE3"></td>
-                            <td class="drawsE3"></td>
-                            <td class="losesE3"></td>
-                            <td class="pointsE3"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryE4"></td>
-                            <td class="winsE4"></td>
-                            <td class="drawsE4"></td>
-                            <td class="losesE4"></td>
-                            <td class="pointsE4"></td>
-                        </tr>
-                    </table>
-                    <table class="table is-bordered column grow">
-                        <tr>
-                            <th class="groupF"></th>
-                            <th>Wins</th>
-                            <th>Draws</th>
-                            <th>Loses</th>
-                            <th>Points</th>
-                        </tr>
-                        <tr>
-                            <td class="countryF1"></td>
-                            <td class="winsF1"></td>
-                            <td class="drawsF1"></td>
-                            <td class="losesF1"></td>
-                            <td class="pointsF1"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryF2"></td>
-                            <td class="winsF2"></td>
-                            <td class="drawsF2"></td>
-                            <td class="losesF2"></td>
-                            <td class="pointsF2"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryF3"></td>
-                            <td class="winsF3"></td>
-                            <td class="drawsF3"></td>
-                            <td class="losesF3"></td>
-                            <td class="pointsF3"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryF4"></td>
-                            <td class="winsF4"></td>
-                            <td class="drawsF4"></td>
-                            <td class="losesF4"></td>
-                            <td class="pointsF4"></td>
-                        </tr>
-                    </table>
-                    <table class="table is-bordered column grow ">
-                        <tr>
-                            <th class="groupG"></th>
-                            <th>Wins</th>
-                            <th>Draws</th>
-                            <th>Loses</th>
-                            <th>Points</th>
-                        </tr>
-                        <tr>
-                            <td class="countryG1"></td>
-                            <td class="winsG1"></td>
-                            <td class="drawsG1"></td>
-                            <td class="losesG1"></td>
-                            <td class="pointsG1"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryG2"></td>
-                            <td class="winsG2"></td>
-                            <td class="drawsG2"></td>
-                            <td class="losesG2"></td>
-                            <td class="pointsG2"></td>
-                        </tr>
-                        <tr>
-                            <td class="countryG3">2222</td>
-                            <td class="winsG3">2</td>
-                            <td class="drawsG3">2</td>
-                            <td class="losesG3">2</td>
-                            <td class="pointsG3">2</td>
-                        </tr>
-                        <tr>
-                            <td class="countryG4">1111</td>
-                            <td class="winsG4">1</td>
-                            <td class="drawsG4">1</td>
-                            <td class="losesG4">1</td>
-                            <td class="pointsG4">1</td>
-                        </tr>
-                    </table> -->
-        </section>
-
-        <section id="get-main" class="columns is-hidden">
-          <section class="country-info column">
-            <section id="get-country"></section>
-            <section class="book">
-              <button id="bookmark-btn" class="favourite">⭐</button>
-            </section>
-
-            <section class="column">
-              <section
-                id="get-country--card"
-                class="match columns is-mobile"
-              ></section>
-            </section>
-          </section>
-        </section>
+<body>
+  <header>
+    <nav class="navbar is-black is-justify-content-space-between" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <h1>⚽2022 FIFA World Cup</h1>
       </div>
-    </main>
-    <script src="./develop/js/script.js"></script>
-  </body>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link"> ⭐Favourites </a>
+
+        <div class="navbar-dropdown"><button id="clear" class="button is-danger is-outlined is-small">Clear List</button>
+          <div class="navbar-dropdown">
+            <ul id="favListId" >
+              <!-- <li></li> -->
+            </ul>
+          </div>
+        </div>
+    </nav>
+  </header>
+
+  <!-- =========Side nav Bar ========== -->
+
+  <main class="colums is-flex is-flex-direction-row">
+    <nav class="menu column is-2 columns has-background-black side-nav p-0 m-0">
+      <article class="panel col ml-2">
+        <p class="panel-heading col has-text-centered mt-3">
+          Search for the Country
+        </p>
+
+        <div class="column no-border">
+          <p class="control has-icons-left col">
+            <input id="search-input" class="input is-primary" type="text" placeholder="Search" />
+          </p>
+          <button id="search-btn" class="button is-danger is-outlined mt-2 btn">
+            Search
+          </button>
+        </div>
+
+        <p class="mb-3 has-text-centered no-border">GROUPS</p>
+        <section id="groups" class="mb-3">
+          <div id="group-a" class="dropdown has-background-black group-btn btn-mar">
+            <div class="dropdown-trigger has-background-black group-btn">
+              <button class="button has-background-black has-text-grey-lighter group-btn ml-2" aria-haspopup="true"
+                aria-controls="dropdown-menu">
+                <span>GROUP-<span class="st-span">A</span></span>
+              </button>
+            </div>
+            <div class="dropdown-menu drop-size" id="dropdown-menu" role="menu">
+              <div class="dropdown-content has-text-centered has-background-black has-text-warning drop-down">
+                <a href="#" class="dropdown-item" name="NED">Netherlands</a>
+                <a class="dropdown-item" name="ECU"> Ecuador </a>
+                <a href="#" class="dropdown-item" name="SEN"> Senegal </a>
+                <a href="#" class="dropdown-item" name="QAT"> Qatar </a>
+              </div>
+            </div>
+          </div>
+
+          <div id="group-b" class="dropdown has-background-black group-btn btn-mar">
+            <div class="dropdown-trigger has-background-black group-btn">
+              <button class="button has-background-black has-text-grey-lighter group-btn ml-2" aria-haspopup="true"
+                aria-controls="dropdown-menu">
+                <span>GROUP-<span class="st-span">B</span></span>
+              </button>
+            </div>
+            <div class="dropdown-menu drop-size" id="dropdown-menu" role="menu">
+              <div class="dropdown-content has-text-centered has-background-black drop-down">
+                <a href="#" class="dropdown-item" name="ENG">England</a>
+                <a class="dropdown-item" name="IRN">Iran</a>
+                <a href="#" class="dropdown-item" name="USA">USA</a>
+                <a href="#" class="dropdown-item" name="WAL">Wales</a>
+              </div>
+            </div>
+          </div>
+
+          <div id="group-c" class="dropdown has-background-black group-btn btn-mar">
+            <div class="dropdown-trigger has-background-black group-btn">
+              <button class="button has-background-black has-text-grey-lighter group-btn ml-2" aria-haspopup="true"
+                aria-controls="dropdown-menu">
+                <span>GROUP-<span class="st-span">C</span></span>
+              </button>
+            </div>
+            <div class="dropdown-menu drop-size" id="dropdown-menu" role="menu">
+              <div class="dropdown-content has-text-centered has-background-black has-text-warning drop-down">
+                <a href="#" class="dropdown-item" name="POL">Poland</a>
+                <a class="dropdown-item" name="ARG">Argentina</a>
+                <a href="#" class="dropdown-item" name="KSA">Saudi Arabia </a>
+                <a href="#" class="dropdown-item" name="MEX">Mexico</a>
+              </div>
+            </div>
+          </div>
+
+          <div id="group-d" class="dropdown has-background-black group-btn btn-mar">
+            <div class="dropdown-trigger has-background-black group-btn">
+              <button class="button has-background-black has-text-grey-lighter group-btn ml-2" aria-haspopup="true"
+                aria-controls="dropdown-menu">
+                <span>GROUP-<span class="st-span">D</span></span>
+              </button>
+            </div>
+            <div class="dropdown-menu drop-size" id="dropdown-menu" role="menu">
+              <div class="dropdown-content has-text-centered has-background-black has-text-warning drop-down">
+                <a href="#" class="dropdown-item" name="FRA">France</a>
+                <a class="dropdown-item" name="AUS">Australia</a>
+                <a href="#" class="dropdown-item" name="DEN">Denmark</a>
+                <a href="#" class="dropdown-item" name="TUN">Tunisa</a>
+              </div>
+            </div>
+          </div>
+
+          <div id="group-e" class="dropdown has-background-black group-btn btn-mar">
+            <div class="dropdown-trigger has-background-black group-btn">
+              <button class="button has-background-black has-text-grey-lighter group-btn ml-2" aria-haspopup="true"
+                aria-controls="dropdown-menu">
+                <span>GROUP-<span class="st-span">E</span></span>
+              </button>
+            </div>
+            <div class="dropdown-menu drop-size" id="dropdown-menu" role="menu">
+              <div class="dropdown-content has-text-centered has-background-black has-text-warning drop-down">
+                <a href="#" class="dropdown-item" name="ESP">Spain</a>
+                <a class="dropdown-item" name="JPN">Japan</a>
+                <a href="#" class="dropdown-item" name="CRC">Costa Rica</a>
+                <a href="#" class="dropdown-item" name="GER">Germany</a>
+              </div>
+            </div>
+          </div>
+
+          <div id="group-f" class="dropdown has-background-black group-btn btn-mar">
+            <div class="dropdown-trigger has-background-black group-btn">
+              <button class="button has-background-black has-text-grey-lighter group-btn ml-2" aria-haspopup="true"
+                aria-controls="dropdown-menu">
+                <span>GROUP-<span class="st-span">F</span></span>
+              </button>
+            </div>
+            <div class="dropdown-menu drop-size" id="dropdown-menu" role="menu">
+              <div class="dropdown-content has-text-centered has-background-black has-text-warning drop-down">
+                <a href="#" class="dropdown-item" name="CRO">Croatia</a>
+                <a class="dropdown-item" name="MAR">Morocco</a>
+                <a href="#" class="dropdown-item" name="BEL">Belgium</a>
+                <a href="#" class="dropdown-item" name="CAN">Canada</a>
+              </div>
+            </div>
+          </div>
+
+          <div id="group-g" class="dropdown has-background-black group-btn btn-mar">
+            <div class="dropdown-trigger has-background-black group-btn">
+              <button class="button has-background-black has-text-grey-lighter group-btn ml-2" aria-haspopup="true"
+                aria-controls="dropdown-menu">
+                <span>GROUP-<span class="st-span">G</span></span>
+              </button>
+            </div>
+            <div class="dropdown-menu drop-size" id="dropdown-menu" role="menu">
+              <div class="dropdown-content has-text-centered has-background-black has-text-warning drop-down">
+                <a href="#" class="dropdown-item" name="BRA">Brazil</a>
+                <a class="dropdown-item" name="SUI">Switzerland</a>
+                <a href="#" class="dropdown-item" name="CMR">Cameroon</a>
+                <a href="#" class="dropdown-item" name="SRB">Serbia</a>
+              </div>
+            </div>
+          </div>
+
+          <div id="group-h" class="dropdown has-background-black group-btn btn-mar">
+            <div class="dropdown-trigger has-background-black group-btn">
+              <button class="button has-background-black has-text-grey-lighter group-btn ml-2" aria-haspopup="true"
+                aria-controls="dropdown-menu">
+                <span>GROUP-<span class="st-span">H</span></span>
+              </button>
+            </div>
+            <div class="dropdown-menu drop-size" id="dropdown-menu" role="menu">
+              <div class="dropdown-content has-text-centered has-background-black has-text-warning drop-down">
+                <a href="#" class="dropdown-item" name="POR">Portugal</a>
+                <a class="dropdown-item" name="GHA">Ghana</a>
+                <a href="#" class="dropdown-item" name="URU">Uruguay</a>
+                <a href="#" class="dropdown-item" name="KOR">Korea Republic</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    </nav>
+
+    <div class="column" style="height: inherit">
+
+      <section id="groups-container" class="columns is-multiline is-one-quarter">
+        <h2 class="column is-half is-offset-one-quarter">Group Stage Statistics</h2>
+      </section>
+
+      <section id="get-main" class="columns is-hidden">
+        <section class="country-info column">
+          <section id="get-country"></section>
+          <section class="book">
+            <button id="bookmark-btn" class="favourite">⭐</button>
+            <h2>Matches:</h2>
+          </section>
+
+          <section class="column">
+            <section id="get-country--card" class="match columns is-mobile"></section>
+          </section>
+        </section>
+      </section>
+    </div>
+  </main>
+  <script src="./develop/js/script.js"></script>
+</body>
+
 </html>

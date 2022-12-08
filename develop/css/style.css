@@ -90,8 +90,32 @@ header h1 {
   color: white;
 }
 
+.column {
+  text-align: center;
+}
+
+h2 {
+  font-size: 55px;
+  font-weight: bolder;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+button:hover {
+  color: gold;
+}
+
 .table {
-  margin: 15px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
   background-color: #800000;
 }
 
@@ -216,12 +240,6 @@ header h1 {
   flex-direction: row;
   justify-content: space-around;
 }
-/* 
-.scores {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-} */
 
 .flags {
   width: 560px;
